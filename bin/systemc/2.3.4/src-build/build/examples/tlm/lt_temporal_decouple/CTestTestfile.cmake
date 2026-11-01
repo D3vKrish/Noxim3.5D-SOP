@@ -1,0 +1,8 @@
+# CMake generated Testfile for 
+# Source directory: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/examples/tlm/lt_temporal_decouple
+# Build directory: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/examples/tlm/lt_temporal_decouple
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(examples/tlm/lt_temporal_decouple/lt_temporal_decouple "/usr/bin/cmake" "-DTEST_EXE=/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/examples/tlm/lt_temporal_decouple/lt_temporal_decouple" "-DTEST_DIR=/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/examples/tlm/lt_temporal_decouple" "-DTEST_INPUT=" "-DTEST_GOLDEN=/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/examples/tlm/lt_temporal_decouple/results/expected.log" "-DTEST_FILTER=" "-DDIFF_COMMAND=/usr/bin/diff" "-DDIFF_OPTIONS=-u" "-P" "/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/cmake/run_test.cmake")
+set_tests_properties(examples/tlm/lt_temporal_decouple/lt_temporal_decouple PROPERTIES  FAIL_REGULAR_EXPRESSION "^[*][*][*]ERROR" _BACKTRACE_TRIPLES "/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/examples/CMakeLists.txt;137;add_test;/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/examples/tlm/lt_temporal_decouple/CMakeLists.txt;65;configure_and_add_test;/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/systemc-2.3.4/examples/tlm/lt_temporal_decouple/CMakeLists.txt;0;")

@@ -1,0 +1,210 @@
+Determining if the __sparc exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5a8e5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5a8e5.dir/build.make CMakeFiles/cmTC_5a8e5.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5a8e5.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5a8e5.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__sparc’ undeclared (first use in this function)
+    7 |   return ((int*)(&__sparc))[argc];
+      |                   ^~~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_5a8e5.dir/build.make:78: CMakeFiles/cmTC_5a8e5.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5a8e5/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __sparc
+  return ((int*)(&__sparc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __sparc__ exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5504d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5504d.dir/build.make CMakeFiles/cmTC_5504d.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5504d.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5504d.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__sparc__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__sparc__))[argc];
+      |                   ^~~~~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_5504d.dir/build.make:78: CMakeFiles/cmTC_5504d.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5504d/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __sparc__
+  return ((int*)(&__sparc__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __hppa exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_afb80/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_afb80.dir/build.make CMakeFiles/cmTC_afb80.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_afb80.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_afb80.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__hppa’ undeclared (first use in this function)
+    7 |   return ((int*)(&__hppa))[argc];
+      |                   ^~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_afb80.dir/build.make:78: CMakeFiles/cmTC_afb80.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_afb80/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __hppa
+  return ((int*)(&__hppa))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __i386 exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9d033/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9d033.dir/build.make CMakeFiles/cmTC_9d033.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d033.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_9d033.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__i386’ undeclared (first use in this function)
+    7 |   return ((int*)(&__i386))[argc];
+      |                   ^~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_9d033.dir/build.make:78: CMakeFiles/cmTC_9d033.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_9d033/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __i386
+  return ((int*)(&__i386))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __aarch64__ exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_612a7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_612a7.dir/build.make CMakeFiles/cmTC_612a7.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_612a7.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_612a7.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__aarch64__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__aarch64__))[argc];
+      |                   ^~~~~~~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_612a7.dir/build.make:78: CMakeFiles/cmTC_612a7.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_612a7/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __aarch64__
+  return ((int*)(&__aarch64__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __ppc__ exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_37c27/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_37c27.dir/build.make CMakeFiles/cmTC_37c27.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_37c27.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_37c27.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__ppc__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__ppc__))[argc];
+      |                   ^~~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_37c27.dir/build.make:78: CMakeFiles/cmTC_37c27.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_37c27/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __ppc__
+  return ((int*)(&__ppc__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __powerpc exist failed with the following output:
+Change Dir: /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_6bf58/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_6bf58.dir/build.make CMakeFiles/cmTC_6bf58.dir/build
+gmake[1]: Entering directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6bf58.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_6bf58.dir/CheckSymbolExists.c.o -c /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__powerpc’ undeclared (first use in this function)
+    7 |   return ((int*)(&__powerpc))[argc];
+      |                   ^~~~~~~~~
+/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_6bf58.dir/build.make:78: CMakeFiles/cmTC_6bf58.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_6bf58/fast] Error 2
+
+
+File /home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __powerpc
+  return ((int*)(&__powerpc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}

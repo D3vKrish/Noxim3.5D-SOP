@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/sc_ttd.dir/main.cpp.o -o sc_ttd  -Wl,-rpath,/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/src ../../../../src/libsystemc.so.2.3.4 

@@ -1,0 +1,39 @@
+topology: MULTI_MESH
+
+multi_mesh:
+  Chip0:
+    dim_x: 4
+    dim_y: 4
+    dim_z: 3        # <-- this makes it 3D (3 layers)
+    n_virtual_channels: 2
+
+buffer_depth: 4
+flit_size: 32
+r2h_link_length: 2.0
+r2r_link_length: 1.0
+n_virtual_channels: 2
+routing_algorithm: XYZ   # <-- use XYZ for 3D mesh
+routing_table_filename: ''
+dyad_threshold: 0.6
+selection_strategy: RANDOM
+route_using_selection_strategy: true
+enable_vc_reallocation: false
+clock_period_ps: 1000
+reset_time: 1
+simulation_time: 10000
+drain_time: 0
+stats_warm_up_time: 0
+detailed: false
+max_volume_to_be_drained: 0
+show_buffer_stats: false
+use_winoc: false
+use_wirxsleep: false
+verbose_mode: VERBOSE_OFF
+trace_mode: false
+trace_filename: ''
+min_packet_size: 8
+max_packet_size: 8
+packet_injection_rate: 0.01
+probability_of_retransmission: 0.01
+traffic_distribution: TRAFFIC_RANDOM
+traffic_table_filename: ''

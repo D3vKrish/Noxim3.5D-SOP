@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/fir.dir/main.cpp.o CMakeFiles/fir.dir/fir.cpp.o CMakeFiles/fir.dir/stimulus.cpp.o CMakeFiles/fir.dir/display.cpp.o -o fir  -Wl,-rpath,/home/taksh/simulators/noxim-3.5d/bin/systemc/2.3.4/src-build/build/src ../../../src/libsystemc.so.2.3.4 
