@@ -147,5 +147,5 @@ constexpr std::array<RouterElevatorConfig, TOTAL_ROUTERS> ROUTER_ELEVATOR_MAP = 
     print(f"Parsed '{yaml_path}' successfully. Generated '{output_path}' for {total_routers} routers across all layers.")
 
 if __name__ == "__main__":
-    yaml_file = sys.argv[1] if len(sys.argv) > 1 else "/home/taksh/simulators/noxim-3.5d/config_examples/3DPARTIALLYCONNECTED.yaml"
+    yaml_file = sys.argv[1] if len(sys.argv) > 1 else "config_examples/3DPARTIALLYCONNECTED.yaml"
     generate_header(yaml_file)

@@ -85,6 +85,8 @@ SC_MODULE(ProcessingElement)
     unsigned int getQueueSize() const;
     RoutingAlgorithm& routing_algorithm;
 
+    double peRand();
+
     using SC_CURRENT_USER_MODULE = ProcessingElement;
     // Constructor
     ProcessingElement(const sc_module_name& name, Tile& tile);

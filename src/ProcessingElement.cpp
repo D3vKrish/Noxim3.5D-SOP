@@ -20,7 +20,7 @@ ProcessingElement::ProcessingElement(const sc_module_name& name,
       local_id(tile.local_id),
       global_id(tile.global_id),
       routing_algorithm(*tile.getRouter().routingAlgorithm),
-      tile(tile), gen(rd())
+      tile(tile), gen(GlobalParams::rnd_generator_seed + 10007 * tile.global_id)
 {
     // Check the validity of the Routing Algorithm
     sc_assert(tile.getRouter().routingAlgorithm != nullptr);
@@ -91,10 +91,17 @@ void ProcessingElement::listAvailablePEs()
     }
 }
 
+double ProcessingElement::peRand()
+{
+    std::uniform_real_distribution<double> dist(0.0, 1.0);
+    return dist(gen);
+}
+
 int ProcessingElement::randInt(int min, int max)
 {
-    return min +
-	(int) ((double) (max - min + 1) * rand() / (RAND_MAX + 1.0));
+    if (min >= max) return min;
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(gen);
 }
 
 void ProcessingElement::rxProcess()
@@ -230,7 +237,7 @@ bool ProcessingElement::canShot(Packet & packet)
 	else
 	    threshold = GlobalParams::probability_of_retransmission;
 
-	shot = (((double) rand()) / RAND_MAX < threshold);
+	shot = (peRand() < threshold);
 	if (shot) {
 	    if (GlobalParams::traffic_distribution == TRAFFIC_RANDOM)
 		    packet = trafficRandom();
@@ -264,7 +271,7 @@ bool ProcessingElement::canShot(Packet & packet)
 	double threshold =
 	    traffic_table->getCumulativePirPor(local_id, (int) now, use_pir, dst_prob);
 
-	double prob = (double) rand() / RAND_MAX;
+	double prob = peRand();
 	shot = (prob < threshold);
 	if (shot) {
 	    for (unsigned int i = 0; i < dst_prob.size(); i++) {
@@ -311,7 +318,7 @@ Packet ProcessingElement::trafficLocal()
 {
     Packet p;
     p.src_id = local_id;
-    double rnd = rand() / (double) RAND_MAX;
+    double rnd = peRand();
 
     vector<int> dst_set;
 
@@ -330,7 +337,7 @@ Packet ProcessingElement::trafficLocal()
     }
 
 
-    int i_rnd = rand()%dst_set.size();
+    int i_rnd = randInt(0, dst_set.size() - 1);
 
     p.dst_id = dst_set[i_rnd];
     p.timestamp = sc_time_stamp().to_double() / GlobalParams::clock_period_ps;
@@ -345,8 +352,8 @@ int ProcessingElement::findRandomDestination(int id, int hops)
 {
     assert(GlobalParams::topology == TOPOLOGY_MESH);
 
-    int inc_y = rand()%2?-1:1;
-    int inc_x = rand()%2?-1:1;
+    int inc_y = (peRand() < 0.5) ? -1 : 1;
+    int inc_x = (peRand() < 0.5) ? -1 : 1;
     
     Coord current =  id2Coord(id);
     
@@ -367,7 +374,7 @@ int ProcessingElement::findRandomDestination(int id, int hops)
 	if (current.y==GlobalParams::mesh_dim_y-1)
 	    if (inc_y>0) inc_y=0;
 
-	if (rand()%2)
+	if (peRand() < 0.5)
 	    current.x +=inc_x;
 	else
 	    current.y +=inc_y;
@@ -419,7 +426,7 @@ Packet ProcessingElement::trafficRandom()
         p.src_id = global_id;
     else
         p.src_id = local_id;
-    double rnd = rand() / (double) RAND_MAX;
+    double rnd = peRand();
     double range_start = 0.0;
     int max_id;
 
@@ -560,19 +567,22 @@ inline double ProcessingElement::log2ceil(double x)
 
 Packet ProcessingElement::trafficBitReversal()
 {
+    int total_nodes = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ?
+                       (int)multi_noc_pe_list.size() : (GlobalParams::mesh_dim_x * GlobalParams::mesh_dim_y * GlobalParams::mesh_dim_z);
+    int node_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? global_id : local_id;
+    int nbits = (int) log2ceil((double) total_nodes);
 
-    int nbits =
-	(int)
-	log2ceil((double)
-		 (GlobalParams::mesh_dim_x *
-		  GlobalParams::mesh_dim_y));
     int dnode = 0;
     for (int i = 0; i < nbits; i++)
-	setBit(dnode, i, getBit(local_id, nbits - i - 1));
+	setBit(dnode, i, getBit(node_id, nbits - i - 1));
+
+    dnode = dnode % total_nodes;
+    if (dnode == node_id && total_nodes > 1)
+        dnode = (node_id + 1) % total_nodes;
 
     Packet p;
-    p.src_id = local_id;
-    p.dst_id = dnode;
+    p.src_id = node_id;
+    p.dst_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? multi_noc_pe_list[dnode] : dnode;
 
     p.vc_id = randInt(0, tile.getNoC().n_virtual_channels-1);
     p.timestamp = sc_time_stamp().to_double() / GlobalParams::clock_period_ps;
@@ -583,20 +593,23 @@ Packet ProcessingElement::trafficBitReversal()
 
 Packet ProcessingElement::trafficShuffle()
 {
+    int total_nodes = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ?
+                       (int)multi_noc_pe_list.size() : (GlobalParams::mesh_dim_x * GlobalParams::mesh_dim_y * GlobalParams::mesh_dim_z);
+    int node_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? global_id : local_id;
+    int nbits = (int) log2ceil((double) total_nodes);
 
-    int nbits =
-	(int)
-	log2ceil((double)
-		 (GlobalParams::mesh_dim_x *
-		  GlobalParams::mesh_dim_y));
     int dnode = 0;
     for (int i = 0; i < nbits - 1; i++)
-	setBit(dnode, i + 1, getBit(local_id, i));
-    setBit(dnode, 0, getBit(local_id, nbits - 1));
+	setBit(dnode, i + 1, getBit(node_id, i));
+    setBit(dnode, 0, getBit(node_id, nbits - 1));
+
+    dnode = dnode % total_nodes;
+    if (dnode == node_id && total_nodes > 1)
+        dnode = (node_id + 1) % total_nodes;
 
     Packet p;
-    p.src_id = local_id;
-    p.dst_id = dnode;
+    p.src_id = node_id;
+    p.dst_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? multi_noc_pe_list[dnode] : dnode;
 
     p.vc_id = randInt(0, tile.getNoC().n_virtual_channels-1);
     p.timestamp = sc_time_stamp().to_double() / GlobalParams::clock_period_ps;
@@ -607,19 +620,24 @@ Packet ProcessingElement::trafficShuffle()
 
 Packet ProcessingElement::trafficButterfly()
 {
+    int total_nodes = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ?
+                       (int)multi_noc_pe_list.size() : (GlobalParams::mesh_dim_x * GlobalParams::mesh_dim_y * GlobalParams::mesh_dim_z);
+    int node_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? global_id : local_id;
+    int nbits = (int) log2ceil((double) total_nodes);
 
-    int nbits = (int) log2ceil((double)
-		 (GlobalParams::mesh_dim_x *
-		  GlobalParams::mesh_dim_y));
     int dnode = 0;
     for (int i = 1; i < nbits - 1; i++)
-	setBit(dnode, i, getBit(local_id, i));
-    setBit(dnode, 0, getBit(local_id, nbits - 1));
-    setBit(dnode, nbits - 1, getBit(local_id, 0));
+	setBit(dnode, i, getBit(node_id, i));
+    setBit(dnode, 0, getBit(node_id, nbits - 1));
+    setBit(dnode, nbits - 1, getBit(node_id, 0));
+
+    dnode = dnode % total_nodes;
+    if (dnode == node_id && total_nodes > 1)
+        dnode = (node_id + 1) % total_nodes;
 
     Packet p;
-    p.src_id = local_id;
-    p.dst_id = dnode;
+    p.src_id = node_id;
+    p.dst_id = (GlobalParams::topology == TOPOLOGY_MULTI_MESH) ? multi_noc_pe_list[dnode] : dnode;
 
     p.vc_id = randInt(0, tile.getNoC().n_virtual_channels-1);
     p.timestamp = sc_time_stamp().to_double() / GlobalParams::clock_period_ps;

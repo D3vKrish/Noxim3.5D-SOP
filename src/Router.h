@@ -51,7 +51,7 @@ SC_MODULE(Router)
 
     sc_out <Flit> flit_tx[DIRECTIONS + 2];   // The output channels
     sc_out <bool> req_tx[DIRECTIONS + 2];	  // The requests associated with the output channels
-    sc_in <bool> ack_tx[DIRECTIONS + 2];	  // The outgoing ack signals associated with the output channels
+    sc_in <bool> ack_tx[DIRECTIONS + 2];	  // The outgoing ack signals associated with the input channels
     sc_in <TBufferFullStatus> buffer_full_status_tx[DIRECTIONS+2];
 
     sc_out <TFreeSlots> free_slots[DIRECTIONS + 1];
@@ -153,6 +153,14 @@ SC_MODULE(Router)
         return selected_upward_links;
     }
 
+    const map<IdRange, vector<int>>& getAllUpwardLinks() const {
+        return all_upward_links;
+    }
+
+    const vector<int>& getAllDownwardLinks() const {
+        return all_downward_links;
+    }
+
     int downward_link() const {
         sc_assert(selected_downward_link > -1);
         return selected_downward_link;
@@ -217,16 +225,15 @@ SC_MODULE(Router)
 
     // Parent NoC
     const NoC & parent_noc;
-    // Returns the upward link selected for each hierarchical interval of global
-    // ids
+    // Returns the upward link selected for each hierarchical interval of global IDs
     map<IdRange, int> selected_upward_links;
-    // Selected downward link from the routeur
+    map<IdRange, vector<int>> all_upward_links; // Stores all candidate upward links per target range
+    // Selected downward link from the router
     int selected_downward_link;
+    vector<int> all_downward_links;             // Stores all candidate downward links
     // Is the router reached by an upward link
     bool is_reached_by_upward_link;
     // Specify whether the router has an upward link
-    // NOTE: faster to check this variable than traversing
-    // selected_upward_links
     bool has_upward_link;
     // Specify whether the router has a downward link
     bool is_reached_by_downward_link;
@@ -236,11 +243,11 @@ SC_MODULE(Router)
     const NoC* noc_down;
 
 
-    // Adele Implementation new variables
-    std::unordered_map<int, double> elevator_costs;      // Elevator Global ID
+    // AdEle+ Implementation variables (Section 3.3)
+    std::unordered_map<int, double> elevator_costs;      // Local elevator costs per router
     std::unordered_map<int, double> header_depart_time;  // Departure Cycle
-    mutable int err_rr_index = 0;
   public:
+    mutable int err_rr_index = 0;
     static std::vector<Router*> all_routers;
     unsigned int local_drained;
 
@@ -253,7 +260,6 @@ SC_MODULE(Router)
     void ShowBuffersStats(std::ostream & out);
 
     // Configure all upward links selected for this router.
-    // Each selected upward link targets a different chiplet.
     void configureUpwardLinks(IdRangeRegister& upward_link_iic,
                               map<IdRange, vector<int>>& ii_ids,
                               map<IdRange, vector<pair<int, int>>>&
@@ -293,4 +299,3 @@ SC_MODULE(Router)
 };
 
 #endif
-

@@ -190,4 +190,4 @@ traffic_single_packet_dst_chip: Layer2
 # For TRAFFIC_LOCAL_CHIPLET, ratio of flits sent on the same chiplet
 traffic_localized_chiplet_ratio: 0.7
 # when traffic table based is specified, use the following file
-traffic_table_filename: /home/taksh/simulators/noxim-3.5d/bin/t.txt
+traffic_table_filename: /home/krish/Noxim-3.5D-Updated/bin/t.txt
